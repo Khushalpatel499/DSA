@@ -68,4 +68,20 @@ ex: vector<int> v1=v ; // time-> O(n)
 8. (*it).first <=> (it->first)
 
 
+# Iterators short forms:
+1. range based loops: we can iterator directly on elements;
+      for(int value: v){
+      cout<<value<<" "
+      }
+2. this work in the all continares.
+3. the value is copy of actual element.
+4. for the acutal value use ampersend 
+for(int &value: v){
+   cout<<value<<" "    ;
+}
+
+# auto keywords
+1. it assume dynamically datatype
+2. we can use it in iterator so now we don't declare it 
+3. 
 */
