@@ -83,5 +83,45 @@ for(int &value: v){
 # auto keywords
 1. it assume dynamically datatype
 2. we can use it in iterator so now we don't declare it 
-3. 
+
+# Maps:
+1. there are three types orderedMap,unorederedMap and multimaps.
+2. it is a data structure that store key value pair
+3.in noraml map value stored in sorted order of key and in unordered they are not order in sorted.
+4. sorted map are implement using redBlack tree(it is a self balancing tree).
+5. map are not stored in continous memmeory space so we can't it+1 in iterators.but it++ can run.
+6. if keys are string then it store in lexographical increasing order(pair in dictonary)
+7.  insertion take O(logn)  n is the current size of map if we only wirte m[5] then it also take O(logn) size with value is string then it assign empty string if value ins int then it assign 0.
+8. keys are unique in map we can't put same key again and if we try then it replace it same key with the new value.
+9. the insert and access time complexity is logn.
+10. m.find() it return an iterator so we can declare iterator and store it in or we can use auto 
+   auto it =m.find(3);
+11. if there is no value then it reutrn m.end()
+
+12. m.erase() it can take two inputs , it can take direct key and other is we can provide value of iterator. time: O(logn)
+
+13. m.clear() it will clear the map.
+14. the insertion time complexity also depends on the key beause if there is key of string then it doesn't take O(logn) always
+basically what happen in red black tree whenver we try to insert new value it have comparsion with existing value(these are log n comparison) and on these comparsion key are placed in sorted order.
+15. due to this if there is m["abcd"]="abcd" then the time complexity became s.size() *log(n)
+
+
+# unordered map:(inbuild implementation,time Complexity,valid key datatype)
+1. here order is not maintain 
+2. they used inbuild hashtables,so basically it create every key a hash
+3. because of hash table insertion and access time complexity is O(1) this is average time complectiy(becuase some time due to collision it can be more time complexity)
+4. m.find(),m.erase(), all are O(1)
+5. if order doesn't matter then use the unorderd map because it decrease the time.
+6.  in case of we can put any complext datatye in key  but not in unrdered case.
+7. ex: unordered_map<pair<int,int>,string> m;// it will not compile // there all work is done through hash value so pair doesn't have inbuild hash value.
+         map<pari<int,int>,string> m; // it will compile
+8. if we want to put complex key then we have to define our hash function 
+# Multimap:
+1. same as map implement using red black tree
+syntax: multimap<int,int> m;
+2. so basically in map there are unique ket while in multimap there is no unique key if a key enter two time it store two time value.
+
+
+
+
 */
