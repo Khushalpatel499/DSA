@@ -119,9 +119,21 @@ basically what happen in red black tree whenver we try to insert new value it ha
 # Multimap:
 1. same as map implement using red black tree
 syntax: multimap<int,int> m;
-2. so basically in map there are unique ket while in multimap there is no unique key if a key enter two time it store two time value.
+2. so basically in map there are unique key while in multimap there is no unique key if a key enter two time it store two time value.
 
 
+#sets:
+1. it is basically key of sets
+2. set<string> s; it store in sorted order and unique values.
+3. the time complexity in map is same here in set // O(logn)
+4. for insert s.insert() ,for find s.find()
 
+
+# unordered sets:
+1. same as unordered map maximumtime complexity O(1)
+2. Multiset allowed to insert multiple same values.now all operatinn became O(logn)
+3. Multiset (important see again)are used many time same value in multiset allvalues are in sorted form.
+4. in stl there is a priority queue that store in sorted order so we can used mutliset instead of priority queue.
+5. in multiset find value return the first iterator.
 
 */
