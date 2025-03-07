@@ -136,4 +136,25 @@ syntax: multimap<int,int> m;
 4. in stl there is a priority queue that store in sorted order so we can used mutliset instead of priority queue.
 5. in multiset find value return the first iterator.
 
+
+#Stack and queues:
+1. recursion internally implements stack,some questions like Balanced Parenthesis and next greater element are done by stack.
+2. queues are help in graph like bfs algorithms.
+3. stack is lifo data structure, and we can access only size and top element.
+4. there are mainly three operaiton in stack push,pop,top
+5. queue is FIFO first in first out.
+6. there are three operation in queue push,pop,front.
+
+#inbuild sort :
+1.sort() it take two parameter first is the where the sorting start that point address and second is the address of the pointer upto the sorting have to do there next one.
+2. array name is address on starting element and for last a is pointer then a+n is last next;
+3. the inbuild algorithm is used is introsort(it is best sorting alogrithm) it is mixture of three sorting algorithms.(quick,heap,insertion)
+4.  in case of vector: sort(a.begin(),a.end());
+5. the complexity is nlogn in worstcase.
+
+#define custome behaviour using Comparator:
+1. the algorithms is depend on the some logic and we can abstract that logic and shift to other function. this function is called comparator function.
+2. inbuild sort(a.begin(),a.end()) it sort in increasing order.
+3. we can give one more argument that is comparator functon but in inbuild it say if you want to swap then reutrn false and not than return true so when we apply our comparator function here then it give oppsosite output.
+4 . easy trick is that in which order you want return that only.
 */
