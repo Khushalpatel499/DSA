@@ -157,4 +157,47 @@ syntax: multimap<int,int> m;
 2. inbuild sort(a.begin(),a.end()) it sort in increasing order.
 3. we can give one more argument that is comparator functon but in inbuild it say if you want to swap then reutrn false and not than return true so when we apply our comparator function here then it give oppsosite output.
 4 . easy trick is that in which order you want return that only.
-*/
+5. there are some inbuild comparator also for decreasing order:
+ex: sort(a.begin(),a.end(),greater<pair<int,int>>())
+
+
+#Lower BOund and upper Bound:
+1. if this function are not available then we have to see binary search and all.
+2. to work this function the data structure should be sorted then it work in logn complexity else they will work in O(n) complexity.
+3. lower bound find the element that we want to find if it is present and not then one greater index element if there is no element (suppose we want to find the element which value is greater then last element then it return the pointer of next to last element).
+4. in upper bound it always find the greater value then that we want to find suppose we want to find the upper bound of 5 and 5 is present in array still till find the next element of 5.
+5. point function return location.
+6. in case of array return pointers and in case of vector return iterator.
+7. it take the starting address and the address of the next element upto where you want find and last element is which element lower bound or upper bound we want to find.
+8. we can also use in case of map and set.
+9. in case of map and set auto it=lower_bound(s.begin(),s.end()) is a O(n) function.
+10. in case of map the  lower and upper bound work only on key.
+
+
+#stl inbuild algorithms: (mainly they are work in O(n)
+1. min_element(starting,ending+1 position) and it return the pointer or iterator.
+2. max_element()
+3. accumulate: to find the sum
+      accumulate(v.begin(),v.end(),initialsumvalue)
+4.count(): it print the count of element
+        count(v.begin(),v.end(),3);
+5. find (): it return the iterator or pointer of the element.
+6. reverse(): to reverse the string or vector
+         reverse(v.begin(),v.end());
+
+# all_of,none_of,any_of
+1. they return true or false;
+2. all_of : it check the condition on all element,if it match to all element then it return true,if any of one not matches then it return false.
+3. here we pass the third paramter as lamda function
+4. lambada function a small syntax to write temparory function.
+syntax: [](int x){return x+2;}
+5. there are many way to call it out.
+   cout<<[](int x){return x+2;}(2);
+6. we can assign the lambada function
+ auto sum=[](int x,int y){return x+y;};
+ cout<<sum(3,4);
+7. any_off: if one condtion return true then it wil be true.
+8. none_off: no one element match the condition then it return true.
+
+      */
+
