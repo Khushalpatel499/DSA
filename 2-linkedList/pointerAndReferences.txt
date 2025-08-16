@@ -1,0 +1,236 @@
+#Pointers:
+1. it is a variable that store the memory address of another variable. instead of storing the actual data, it store the location in memory.(in simple word it is sign board which tell where is the location).
+2. syntax: type *pointer_name;(type is the type of data the pointer will point ex: int,char)
+
+3. dereferencing the pointer(accessing the value):
+  a. now we know that pointer holds an address ,but sometimes we want to use the value that present at the address which hold by pointer so do that we dereference the pointer.
+
+b. simple meaning: accessing the data stored at the address the pointer is pointing to.
+ c. to dereference a pointer ,we use the * symbol.
+
+4. address-of operator(&): to get the address of a variable 
+   ex:  int v=10;
+        int *p =&v; // p hold the address of v
+        cout<<*p; // dereferencing output: 10
+        cout<<&v;// output: memory address of v
+        cout<<p;// output: address stored by p
+
+
+# pointer Arithmetic:
+1. it helps to perform operation like addtion,substraction,and comparison on pointers. it is useful when work with array.
+2. when we add an integer to a pointer , we are moving the pointer forward in memory. but it also see the size of the type of pointer means suppose if a pointer points to an int(which usally takes 4 bytes in memory), adding one to pointer will move it by 4 bytes.
+
+ex:1. addition:
+    int arr[]= {10,20,30,40}
+    int *p =&arr; // it point to first element of arr
+     cout<< *p; // 10
+     p++ or p=p+1
+      cout<<*p;// 20
+
+ 2. substraction:
+     int arr[]= {10,20,30,40}
+      int *p =&arr[3];// it point to third element of arr
+      cout<< *p;//40
+      p--;
+      cout<<*p;//30
+
+3. subtracting two pointers:
+  a. when we subtract one pointer from another, the result is the number of elements between the two pointers, not the raw byte difference.
+ex: int arr[]={10,20,30,40};
+      int *p1=&arr[0];// pointing to first element
+      int *p2 =&arr[3];// pointing to fourth element
+
+        cout<<p2-p1;// output:3 because there are only three element between them
+
+Note: pointer subtraction is calculating the number of elements, not the number of values in between.
+
+understanding: The distance between ptr1 and ptr2 is the number of elements between arr[0] and arr[3], and in this case, that's 3 elements:
+arr[0] to arr[1] (1 element),
+arr[1] to arr[2] (2 elements),
+arr[2] to arr[3] (3 elements).
+
+
+4. pointer comparison: two compare two pointer if one points to before /after/same another memory.
+
+
+#Reference:
+
+1. a reference is an alias to an existing variable, it is act an alternative name for that variable ,both refer to same memory location.
+2. declaration: type &referecce_variable_name =existing_variable_name;
+3. A reference must be initialized when declared.
+4. Unlike pointers, references cannot be null and cannot be reassigned to refer to a different variable after initialization.
+5.Unlike pointers, references don’t require dereferencing. Accessing the reference directly gives you the value of the variable it refers to.
+
+ex: int x=10;
+    int &r=x;
+    cout<< x;//10
+    cout<<r;//10
+     r=20;
+    cout<<r;//20
+    cout<<x;//20
+
+6. changing the value of r also change the value of x because both are referencing the same memory location.
+7. Why Use References?
+   Ease of use: References are easier to use than pointers, especially when passing arguments to functions.
+   No need for dereferencing: You can directly work with the value, making code cleaner and less error-prone.
+   References cannot be null: This prevents accidental null pointer dereferencing.
+8. Pointer store the memory address of variable while reference store the variable address directly(not deal with memory address).
+
+9.Pass by Value (Regular variable): Think of it as copying a page from a book. The page you give to someone doesn't change the book itself.
+
+10.Pass by Reference (Regular variable): Think of it as giving the actual book to someone. They can change the book directly, and those changes affect the book you have.
+
+11.Pass by Value (Pointer): It's like copying the address of the house. The person can go to that address and change things there, but they can't change the address itself.
+
+12. Pass by Reference (Pointer): It's like giving the actual address to someone. They can go to that address, change the house (the value), or even move the address to somewhere else (change the pointer).
+
+#include<iostream>
+using namespace std;
+
+// pass by value in regular variable
+// no change becuase it passes the copy of variable
+void passByvalueVariable(int x){
+    x++;
+    cout<<x<<endl;
+}
+//pass by reference in regular variable
+void passByReferenceVariable(int &x){
+    x++;
+    cout<<x<<endl;
+}
+
+//pass by value in pointer
+//The function can change the value at the memory address (using dereferencing), but it cannot change the pointer's address itself.
+void passByvaluePointer(int* x){
+    *x=2;
+    x=nullptr;
+}
+
+//pass by reference in pointer
+void passByReferencePointer(int* &x){
+   *x=5; // x=5 is wrong becuasue here x is reference of pointer
+   x=nullptr;
+}
+
+int main(){
+    int num=5;
+    int temp=1;
+    int* p =&num;
+    int* t =&temp;
+    cout<<p<<endl;//address
+    cout<<*p<<endl; //value
+    cout<<&num<<endl; //address
+    cout<<*(&num)<<endl;//value
+    cout<<&(*p)<<endl;//address
+   //  cout<<*(*p)<<endl;//not run becuase *p is value and then * mean pointer but value have address
+      cout<<(&p)<<endl;//address different
+   //   cout<<&(&p)<<endl;// address of address is not possible
+    cout<<num<<endl;//oldvalue
+    passByvalueVariable(num);
+    cout<<num<<endl;//new value
+    
+    cout<<num<<endl;//oldvalue
+    passByReferenceVariable(num);
+    cout<<num<<endl;//newvalue
+    
+    cout<<temp<<endl;//1
+    passByvaluePointer(&temp);
+    cout<<temp<<endl;//2
+    passByvaluePointer(t);
+    cout<<temp<<endl;//2
+    cout<<p<<endl;//old address
+    
+    cout<<temp<<endl;
+   // passByReferencePointer(&temp); // here we cannot provide reference becuase the fucntion require reference of pointer.
+    passByReferencePointer(t);
+    cout<<temp<<endl;
+    cout<<t<<endl;
+    return 0;
+}
+
+#Node constructor for initialization
+First Way (Assignment inside the constructor body)
+Node(int data) {
+    this->data = data;
+    next = nullptr;
+}
+What happens here:
+
+First, data and next are created (but with no values yet — or default values).
+
+Then, inside the { }, you set their values.
+
+Second Way (Initializer list)
+Node(int data)
+    : data(data), next(nullptr)
+{}
+What happens here:
+
+data is directly given the value you passed in.
+next is directly set to nullptr.
+This happens before the constructor body {} runs.
+
+
+#Dynamic Memory Allocation:
+1.sometime the size of array is insufficient , to solve the issue we implement the memory manually during the runtime.
+2.To allocate memory dynamically, library functions are malloc(), calloc(), realloc() and free() are used. These functions are defined in the <stdlib.h> header file.
+
+#LinkedList:
+
+1. A linked list a linear data structure(non continuous), in array elements are stored in continuous memory location while in linked list elements are stored in nodes,where each node contain the data (the value stored) and a reference(link) to the next node in the list. Each node is connected to the next node.
+2. Type of Linked List:
+   a. Singly linked List: each node connect to next and the last node link is nullptr or in old versions is NULL.
+   b. Doubly linked List: Each node contain the link to both next node and the previous node.
+   c. Circular Linked List: in this list the last node point back to the first node (in circle form).
+
+3.Basic Operation of Linked List:
+  a.insertion at begin,end,specific place
+  b. delete from begin,end,specific place
+  c. traverse
+  d. search
+  e. length
+
+#DoublyLinkedList:
+1.it is more complex and it provide more advantages,it provide efficient traversal of list in both direction.
+2. this is because of the pointer each node have for both direction the previous and the next pointer.
+3. it help in quick insertion and deletion of node from the list.
+
+
+Reprsentation: 1.data 2.prev 3. next
+
+Imp :when the name comflict then we use this pointer.
+
+ex: class Node{
+      int data;
+       Node* prev,*next;
+            Node(int data){
+             this->data =data;
+            prev=next=nullptr;
+}
+    };
+
+   class Node{
+      int data;
+      Node* prev,*next;
+        Node(int new_data){
+         data = new_data;
+      prev=next=nullptr;
+}
+
+};
+
+4. Operation of doubly linked List:
+ a. forward and backward traversal
+ b. length
+ c. insertion: beg,speicifcloc,end
+ d. deletion: beg, specificLoc,end
+
+
+#circular linked List:
+1. it is a data structure where last node connect to the first node. forming a loop.
+2. circular linked lists are especially helpful for tasks like scheduling and managing playlists, allowing for smooth navigation.
+
+3. there are two type of circular linked list:
+   a. circular singly linked list
+   b. circular doubly linked list
+

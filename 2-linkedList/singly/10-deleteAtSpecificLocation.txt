@@ -1,0 +1,74 @@
+//Algorithm:
+1. if head is not present or invalid position then return head.
+2. if delete from front create a curr node, move head node and delete curr node.
+3. for specified location traverse till before the position while curr is not null.
+4. check for if pos is greater than number of node and by check id curr is null or curr next is null then return head.
+5. store the pos node in temp and set location of curr->next to temp->next and delete temp and return head.
+
+// 1. if head == null or pos<1 return head
+   2. if pos ==1
+   3.         curr = head
+   4.         head = head->next
+   5          free(curr)
+   6.         return head
+   7. for(int i=1;i<pos-1 && curr!=null;i++)
+   8.       curr=curr->next
+   9. if curr==null or curr->next == null return head
+   10.Node temp = curr->next
+   11. curr->next = temp->next
+   12. free(temp)
+   13. return head
+
+
+// implementation
+
+#include<iostream>
+using namespace std;
+class Node{
+      int data;
+      Node* next;
+      Node(int new_data){
+        this->data = new_data;
+        this->next = nullptr;
+ }
+};
+void traversal(Node* head){
+   Node* curr = head;
+   while(curr!=nullptr){
+     cout<<curr->data<<" ";
+     curr=curr->next;
+  }
+  cout<<endl;
+}
+Node* deleteAtSpecificLocation(Node* head,int pos){
+     if(pos<1 || head==nullptr) return head;
+     Node* curr = head;
+     if(pos==1){
+        head=head->next;
+        free(curr);
+        return head;
+    }
+    for(int i=1;i<pos-1 && curr!=nullptr;i++){
+        curr=curr->next;
+}
+   if(curr==nullptr !! curr->next = nullptr) return head;
+
+   Node* temp = curr->next;
+   curr->next = temp->next;
+    free(temp);
+    return head;
+}
+
+
+int main(){
+   Node* head = new Node(10);
+   head->next = new Node(20);
+   head->next->next = new Node(30);
+   head->next->next->next = new Node(40);
+   traversal(head);
+   int pos =2;
+   head =deleteAtSpecificLocation(head,pos);
+   traversal(head);
+
+   return 0;
+}

@@ -1,0 +1,113 @@
+// rotate the array (rotate an array counterclockwise  by d or left by d)
+// naive apporch 
+//1. loop thorugh shifts and store the first element shift remaining element
+// time-O(n*d) space -O(1)
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+void rotateArray(vector<int>&v,int d){
+    int n =v.size();
+    
+    for(int i=0;i<d;i++){
+        int first =v[0];
+        for(int j=0;j<n-1;j++){
+            v[j]=v[j+1];
+        }
+        v[n-1]=first;
+    }
+}
+
+int main(){
+    vector<int>v ={1,2,3,4,5};
+    int d=2;
+      rotateArray(v,d);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    return 0;
+}
+
+
+
+
+
+
+// rotate the array (rotate an array counterclockwise  by d or left by d)
+// better apporch 
+// 1. create a temp array 
+//2. we know that for the d rotate ,n-d element should be front and d elment should be end.
+//3. store the last n-d element to the first n-d  position.
+//4. store the first d element to the last position.
+//5. there is catch so if d>n for that we use d%=n;
+
+// time-O(n) space -O(n)
+#include<iostream>
+#include<vector>
+
+using namespace std;
+void rotateArray(vector<int>&v,int d){
+    int n=v.size();
+    d%=n;
+    
+    vector<int> temp(n);
+    for(int i=0;i<n-d;i++){
+        temp[i]=v[d+i];
+    }
+    for(int i=0;i<d;i++){
+        temp[n-d+i]=v[i];
+    }
+    for(int i=0;i<n;i++){
+        v[i]=temp[i];
+    }
+    
+}
+int main(){
+    vector<int> v={1,2,3,4,5};
+    int d=6;
+    rotateArray(v,d);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+}
+
+
+
+//Using Juggling Algorithm - O(n) Time and O(1) Space
+
+REMAINING...........
+
+
+
+// Using Reversal Algorithm - O(n) Time and O(1) Space
+logic: when we rotate the element the n-d element come in front and the d element in last.
+1. rotate the first n-d element
+2. then rotate the d element 
+3. then rotate whole array
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+void rotateArray(vector<int>&v,int d){
+  int n=v.size();
+  d%=n;
+  reverse(v.begin(),v.begin()+d);
+  reverse(v.begin()+d,v.end());
+  reverse(v.begin(),v.end());
+}
+
+int main(){
+      vector<int> v={1,2,3,4,5};
+      int d=2;
+      rotateArray(v,d);
+      for(auto x:v){
+       cout<<x<<" ";
+}
+return 0;
+}
+
+
+
+

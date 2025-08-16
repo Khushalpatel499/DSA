@@ -1,0 +1,52 @@
+#algorithm:
+1. create a new Node with the val
+2. if head is null then head = newNode
+3. else curr = head
+4. while curr->next is not null
+5.          curr=curr->next
+6.    curr->next =newNode;
+7.    newNode->prev =curr;
+8. return head;
+
+//implementation:
+#include<iostream>
+using namespace std;
+class Node{
+      public:
+          int data;
+          Node* prev,* next;
+          Node(int new_data):data(new_data),prev(nullptr),next(nullptr){}
+};
+void traversal(head){
+     while(head!=nullptr){
+cout<<head->data<<" ";
+   head=head->next;
+}
+cout<<endl;
+}
+
+Node* insertAtEnd(Node* head,int val){
+     Node* newNode = new Node(val);
+     if(head==nullptr){
+        head=newNode;
+}else{
+     Node* curr = head;
+       while(curr->next!=nullptr){
+            curr=curr->next;
+   }
+        curr->next =newNode;
+        newNode->prev = curr;
+}
+ return head;
+}
+int main(){
+   Node * head = new Node(10);
+   head->next = new Node(20);
+   head->next->prev = head;
+  head ->next->next = new Node (30);
+  head ->next->next->prev = head->next;
+   traversal(head);  
+int val=50;
+  head=insertAtEnd(head,val);
+   return 0;
+}

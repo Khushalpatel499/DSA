@@ -1,0 +1,119 @@
+// using array method:
+
+//  naive time-O(n^2) space-O(n)
+
+#include <iostream>
+using namespace std;
+int main()
+{
+   int arr[]={16,17,4,3,5,2};
+   int size=sizeof(arr)/sizeof(arr[0]);
+   
+   int temp[size];
+   int k=0;
+   for(int i=0;i<size;i++){
+       int flag = 1;
+       int t = arr[i];
+       for(int j=i+1;j<size;j++){
+           if(t<arr[j]){
+               flag=0;
+               break;
+           }
+       }
+       if(flag==1){
+          temp[k]=t;
+          k++;
+       }
+   }
+   int temp_size=sizeof(temp)/sizeof(temp[0]);
+   for(int i=0;i<k;i++){
+       cout<<temp[i]<<endl;
+   }
+    
+    return 0;
+}
+
+
+//using vector method:
+
+// naive using vector time-O(n^2) space-O(1)
+
+#include <iostream>
+#include<vector>
+using namespace std;
+
+vector<int> leader(vector<int> &arr){
+    vector<int> res;
+    for(int i=0;i<arr.size();i++){
+        int j;
+        for(j=i+1;j<arr.size();j++){
+            if(arr[j]>arr[i]) break;
+        }
+        if(j==arr.size()){
+                res.push_back(arr[i]);
+            }
+    }
+    return res;
+}
+
+int main()
+{
+  vector<int> arr={16,17,4,3,5,2};
+   
+  vector<int> result =leader(arr);
+   for(int i :result){
+       cout<<i<<" ";
+   }
+   cout<<endl;
+   
+    return 0;
+}
+
+
+
+//  using suffix maximum time-O(n) space-O(n)
+// idea: the right most element is always the leader compare the last  element with 
+// right to left if we find greater element it should be the new greater element till 0th element.
+#include <iostream>
+#include<vector>
+using namespace std;
+
+void swapVector(vector<int>& temp){
+    for(int i=0;i<temp.size()/2;i++){
+        int t=temp[i];
+        temp[i]=temp[temp.size()-1-i];
+        temp[temp.size()-1] =t;
+    }
+}
+
+vector<int> leader(vector<int> &arr){
+    vector<int> res;
+    int high = arr[arr.size()-1];
+    
+    res.push_back(high);
+    for(int i=arr.size()-2;i>=0;i--){
+        if(arr[i]>high){
+            high=arr[i];
+            res.push_back(high);
+        }
+    }
+
+  swapVector(res);
+  return res;
+    
+}
+
+int main()
+{
+  vector<int> arr={16,17,4,3,5,2};
+   
+  vector<int> result =leader(arr);
+   for(int i :result){
+       cout<<i<<" ";
+   }
+   cout<<endl;
+   
+    return 0;
+}
+
+

@@ -1,0 +1,152 @@
+// 1. using a hash set or directory to get unique use unoredered because already sorted.
+// time -O(n) space -O(n)
+// a. using the new vector to store the uniqu sorted .
+// but the problem is that it can store in any order .
+// if we use ordered set
+
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<unordered_set>
+#include<set>
+using namespace std;
+
+
+
+vector<int> removeDuplicate(vector<int> &arr){
+    
+ //   unordered_set<int> s ;
+   set<int> s;
+    for(int i=0;i<arr.size();i++){
+        s.insert(arr[i]);
+    }
+    vector<int> temp;
+    for(auto x:s){
+        temp.push_back(x);
+    }
+    return temp;
+}
+
+
+int main()
+{
+  vector<int> arr={1, 2, 2, 3, 4, 4, 4, 5, 5};
+   
+   vector<int> result= removeDuplicate(arr);
+   
+    cout<<result.size()<<endl;
+    for(int i=0;i<result.size();i++){
+        cout<<result[i]<<" ";
+    }
+     
+    
+   
+    return 0;
+}
+
+
+
+
+
+
+// 1. using a hash set or directory to get unique use unoredered because already sorted.
+// time -O(n) space -O(n)
+// b. now manipulate the array
+// 
+// 
+
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<unordered_set>
+#include<set>
+using namespace std;
+
+
+
+int removeDuplicate(vector<int> &arr){
+    
+    int index =0;
+   unordered_set<int> s;
+    for(int i=0;i<arr.size();i++){
+        if(s.find(arr[i])==s.end()){
+            s.insert(arr[i]);
+            arr[index++]=arr[i];
+        }
+    }
+    return s.size();
+    
+    
+    
+}
+    
+
+
+int main()
+{
+  vector<int> arr={1, 2, 2, 3, 4, 4, 4, 5, 5};
+   
+  int result= removeDuplicate(arr);
+   
+    cout<<result<<endl;
+    for(int i=0;i<result;i++){
+        cout<<arr[i]<<" ";
+    }
+     
+    
+   
+    return 0;
+}
+
+
+
+
+// 2. as array is already sorted so we have to only check the crossponding elements.
+// time -O(n) space -O(1)
+
+
+#include <iostream>
+#include<algorithm>
+#include<vector>
+#include<unordered_set>
+#include<set>
+using namespace std;
+
+
+
+int removeDuplicate(vector<int> &arr){
+    
+    int index =1;
+    if(arr.size()<=1){
+        return arr.size();
+    }
+  
+    for(int i=1;i<arr.size();i++){
+        if(arr[i]!=arr[i-1]){
+            arr[index++]=arr[i];
+        }
+    }
+    return index;
+    
+    
+    
+}
+    
+
+
+int main()
+{
+  vector<int> arr={1, 2, 2, 3, 4, 4, 4, 5, 5};
+   
+  int result= removeDuplicate(arr);
+   
+    cout<<result<<endl;
+    for(int i=0;i<result;i++){
+        cout<<arr[i]<<" ";
+    }
+     
+    
+   
+    return 0;
+}
+

@@ -1,0 +1,98 @@
+#array Basic:
+
+1. An array stores items (in case of C/C++ and Java Primitive Arrays) or their references (in case of Python, JS, Java Non-Primitive) at contiguous locations.
+2. Array is a collection of items of the same variable type that are stored at contiguous memory locations. 
+
+# declaration:
+1. int arr[5];
+
+# initialization:
+int arr[]={1,2,3};
+int arr[5]={1,2,3,4,5};
+
+
+
+Step-by-step Explanation:
+
+Step 1: sizeof(arr)
+This gives you the total size in bytes of the whole array.
+
+In this case:
+
+arr has 5 integers.
+
+Each int is usually 4 bytes (depends on system/compiler).
+
+So sizeof(arr) = 5 * 4 = 20 bytes.
+
+ Step 2: sizeof(arr[0])
+This gives the size of a single element (first element).
+
+arr[0] is an int, so it's 4 bytes.
+
+ Step 3: Divide to Get Number of Elements
+
+int length = sizeof(arr) / sizeof(arr[0]);
+length = 20 / 4 = 5
+
+ This is how you get the number of elements in the array.
+
+
+In C++, when you pass an array to a function, like arr[], you're not passing a copy of the array. You are actually passing a pointer to the original array, which allows the function to modify the original contents.
+
+
+
+
+# array types:
+
+1. on basis of size                                        2.on basis of dimension
+
+ a. fixed size:
+
+// Here the memory is allocated at compile time.
+int arr[5]; 
+
+// Here memory is allocated at run time (Also
+// known as dynamically allocated arrays)
+int *arr = new int[5];
+
+2. dynamic size: vector<int>v
+
+
+# Subarray:
+1. A subarray is a contiguous part of array, i.e., Subarray is an array that is inside another array.
+2. In general, for an array of size n, there are n*(n+1)/2 non-empty subarrays.
+3. For example, Consider the array [1, 2, 3, 4], There are 10 non-empty sub-arrays. The subarrays are: 
+ (1), (2), (3), (4), (1,2), (2,3), (3,4), (1,2,3), (2,3,4), and (1,2,3,4)
+
+
+#Subsequence:
+1.A subsequence is a sequence that can be derived from another sequence by removing zero or more elements, without changing the order of the remaining elements.
+2.More generally, we can say that for a sequence of size n, we can have (2n – 1) non-empty sub-sequences in total.
+3.For the same above example, there are 15 sub-sequences. They are:
+(1), (2), (3), (4), (1,2), (1,3),(1,4), (2,3), (2,4), (3,4), (1,2,3), (1,2,4), (1,3,4), (2,3,4), (1,2,3,4).
+
+#subset:
+
+1.If a Set has all its elements belonging to other sets, this set will be known as a subset of the other set.
+2. For example, Let Set_A = {m, n, o, p, q}, Set_ B = {k, l, m, n, o, p, q, r}
+Then, A ⊆ B.
+
+
+#searching:
+
+1. finding a element or group of elements in an array.
+2. most common searching algorithms:
+    a. linear search  - time -O(N) ( go each element till the desire element is not found.
+    b. binary search  - time -O(log2N)( used in sorted array(increasing or decreasing), by repeatily dividing the array in  half and decide the next interval to find the element).
+    c. ternary search - time -O(log3N) ( used in sorted array ,similar to binary search but now array divided into three parts).
+
+
+
+
+
+
+
+
+
+ 

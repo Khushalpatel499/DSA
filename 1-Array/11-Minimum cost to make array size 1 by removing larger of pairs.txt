@@ -1,0 +1,19 @@
+//Minimum cost to make array size 1 by removing larger of pairs
+// approach: find the least element and multiply it by (n-1) terms
+//time:O(n) space: O(1)
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+int  miniCost(vector<int> &v){
+    int n=v.size();
+    return (n-1) *(*min_element(v.begin(),v.end()));
+}
+
+int main(){
+    vector<int> v={4, 3, 2 };
+    int res = miniCost(v);
+    cout<<res<<endl;
+    return 0;
+}

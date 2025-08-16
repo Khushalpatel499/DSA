@@ -1,0 +1,32 @@
+//Minimum increment by k operations to make all equal
+//approach: 1.first find the maximum element and compare remaining element with it by (max-arr[i])/k the output is the number of minimum 
+// increment operation for that element.
+// if (max-arr[i])%k!=0 it cannot be convert so return -1;
+// time: O(n) , space: O(1)
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int minimumOperation(vector<int> &v,int k){
+    int count=0;
+    
+    int maxi = *max_element(v.begin(),v.end());
+   // cout<<maxi<<endl;
+    for(int x: v){
+         if((maxi-x)%k!=0)  return -1;
+         count+= (maxi-x)/k;
+    }
+    return count;
+}
+
+
+int main(){
+    
+    vector<int> v= {21, 33, 9, 45, 63};
+    int k=6;
+      cout<<minimumOperation(v,k);
+      
+}

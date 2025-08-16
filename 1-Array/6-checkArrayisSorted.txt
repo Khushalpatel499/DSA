@@ -1,0 +1,94 @@
+//  check if an array is sorted or not 
+// iterative approach: time-O(n) and space-O(1)
+// 
+#include <iostream>
+#include<vector>
+using namespace std;
+
+bool isSorted(vector<int> &arr){
+    for(int i=1;i<arr.size();i++){
+        if(arr[i]>arr[i-1]) return false;
+    }
+    return true;
+    
+}
+
+
+int main()
+{
+  vector<int> arr={10, 20, 30, 5, 6};
+   
+  bool checker = isSorted(arr);
+  cout<<(isSorted(arr)==1?"true":"false");
+  cout<<checker<<endl;
+   
+    return 0;
+}
+
+
+
+
+//  check if an array is sorted or not 
+// recursive approach: time-O(n) and space-O(n)
+// 1. check the last two element if they are sorted and go for n-1 element recursively.
+
+#include <iostream>
+#include<vector>
+using namespace std;
+bool isSortedRecursive(vector<int>& arr,int n){
+    if(n==0 || n==1) return true;
+    return (arr[n-1]>=arr[n-2]) && isSortedRecursive(arr,n-1);
+}
+
+bool isSorted(vector<int> &arr){
+    
+    return isSortedRecursive(arr,arr.size());
+}
+
+
+int main()
+{
+  vector<int> arr={10, 20, 30,5,6};
+   
+  bool checker = isSorted(arr);
+  cout<<(isSorted(arr)==1?"true":"false");
+  cout<<checker<<endl;
+   
+    return 0;
+}
+
+
+
+
+//  check if an array is sorted or not 
+// inbuild method:
+
+// 1. is_sorted: time-O(n) and space-O(1)
+
+#include <iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+
+
+bool isSortedFirst(vector<int> &arr){
+    
+    if(is_sorted(arr.begin(),arr.end())){
+        return true;
+    }
+    return false;
+}
+
+
+int main()
+{
+  vector<int> arr={10, 20, 30,5,6};
+   
+  bool checker = isSortedFirst(arr);
+  cout<<(isSortedFirst(arr)==1?"true":"false")<<endl;
+  
+  cout<<checker<<endl;
+   
+    return 0;
+}

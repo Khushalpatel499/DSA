@@ -1,0 +1,46 @@
+#Algorithm
+1. check if head is null and head->next is null then return nullptr;
+2. curr=head;
+3. while curr->next!=nullptr
+4.       curr=curr->next
+5.   curr->prev->next =null
+6. delte curr
+7. return head;
+
+//implementation:
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+      int data;
+      Node* prev,* next;
+      Node(int new_data): data(new_data),prev(nullptr),next(nullptr){}
+};
+void traversal(Node* head){
+    while(head!=nullptr){
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+    cout<<endl;
+
+}
+Node* deleteAtEnd(Node *head){
+      if(head==nullptr || head->next==nullptr) return nlullptr;
+      while(curr->next!=nullptr) {
+       curr=curr->next;
+}
+   curr->prev->next =nullptr;
+   delete curr;
+   return head;
+}
+int main(){
+   Node* head = new Node(10);
+    head->next = new Node(20);
+    head->next->prev = head;
+    head->next->next= new Node(30);
+    head->next->next->prev = head->next;
+    traversal(head);
+    head=deleteAtEnd(head);
+    traversal(head);
+    return 0;
+}

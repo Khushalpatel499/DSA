@@ -1,0 +1,78 @@
+#Algorithm
+
+1. inliaize a pointer to the head.(current) and create a count=0.
+2. loop through the list while current is not null.
+3. and increase value of count. and move pointer to the next node.
+4. return the count.
+
+// 1. let curr = head;
+   2  count =0.
+   3. while(curr!=null){
+   4      count++;
+   5.      curr=curr->next
+   6. }
+   7. print count;
+
+//Iterative Approach:
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    Node(int new_data){
+        this->data = new_data;
+        this->next = nullptr;
+    }
+};
+
+int countNode(Node* head){
+    int count=0;
+    Node* curr =head;
+    while(curr!=nullptr){
+        count++;
+        curr=curr->next;
+    }
+    return count;
+}
+
+int main(){
+    Node* head = new Node(10);
+    head->next = new Node(20);
+    head->next->next = new Node(30);
+    head->next->next->next = new Node (40);
+    int count=0;
+    
+    cout<<countNode(head);
+    return 0;
+}
+
+//Recursive approach
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    Node(int new_data){
+        this->data=new_data;
+        this->next =nullptr;
+    }
+};
+int countNode(Node* head){
+    Node* curr =head;
+    if(curr==nullptr){
+        return 0;
+    }
+    return 1+ countNode(curr->next);
+}
+
+int main(){
+    Node* head = new Node(10);
+    head->next = new Node(20);
+    head->next->next = new Node(30);
+    head->next->next->next = new Node(40);
+   
+    cout<<countNode(head);
+    return 0;
+}

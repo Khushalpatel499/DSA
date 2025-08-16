@@ -1,0 +1,62 @@
+#Algorithm
+1. if pos<1 then return head invalid location
+2. if pos ==1 then shift head to next pointer.
+3. curr =head
+4. for loop for i=1 to i<pos and curr!=null
+6.     curr=curr->next
+7. if curr==nullptr return head  pos is greater 
+8. if(curr->prev!=null) then 
+9.    curr->prev->next =curr->next
+10.if (curr->next!=null) then
+11.   curr->next->prev =curr->prev
+12. delete curr
+13. return head
+
+#implementation
+
+#include<iostream>
+using namespace std;
+class Node{
+      public:
+        int data;
+        Node* prev,* next;
+        Node(int new_data): data(new_data),prev(nullptr),next(nullptr){}
+};
+void traversal(Node* head){
+        while(head!=nullptr){
+       cout<<head->data<<" ";
+      head=head->next;
+}
+cout<<endl;
+
+}
+Node * deleteAtSpecLoc(Node* head,int pos){
+         if(pos<1) return head;
+         if(pos==1) {
+          head = head->next;
+          return head;
+         }
+        Node* curr = head;
+        for(int i=1;i<pos && curr!=nullptr;i++){
+               curr=curr->next;
+          }  
+         if(curr->prev!=nullptr){
+           curr->prev->next= curr->next;
+        } 
+        if(curr->next!=nullptr){
+           curr->next->prev =curr->prev;
+          }
+         delete curr;
+          return head;
+}
+int main(){
+    Node* head = new Node(10);
+    head->next = new Node(20);
+    head->next->prev =head;
+    head->next->next = new Node(30);
+    head->next->next->prev = head->next;
+    traversal(head);
+    head= deleteAtSpecLoc(head,pos);
+    traversal(head);
+    return 0;
+}

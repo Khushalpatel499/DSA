@@ -1,0 +1,80 @@
+# using a temp array time=O(n) space-O(n)
+
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void rotateRight(vector<int>&v,int k){
+    vector<int> t;
+    for(int i=k;i<v.size();i++){
+          t.push_back(v[i]);
+       }
+    for(int i=0;i<k;i++){
+         t.push_back(v[i]);
+    }
+
+}
+
+
+int main(){
+     vector<int> v={1,2,3,4,5};
+     int k=2;
+     rightRotate(v,k);
+     for(int i=0;i<v.size();i++){
+          cout<<v[i] <<" ";
+     }
+
+ return 0;
+}
+
+
+# print the data in right rotate:
+time-O(n) space -O(1)
+
+
+include<iostream>
+using namespace std;
+void rotateArrayRight(int arr[],int n,int k){
+      
+       k%=n;
+    for(int i=0;i<n;i++){
+           if(i<k){
+          cout<<arr[n+i-k]<<" ";
+     }else{
+         cout<<arr[i-k]<<" ";
+    } 
+
+}
+
+int main(){
+    int arr[]={1,2,3,4,5};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int k=2;
+    rotateArrayRight(arr,n,k);
+   return 0;
+}
+
+
+#Reversing the array:
+method: first rotate the k last element , then rotate the n-k first element , then rotate the whole array
+time: O(n) space:O(1)
+#include<iostream>
+using namespace std;
+
+void rotateRightArray(int arr,int n,int k){
+    k%=n;
+    reverse(arr,n-k,n);//reverese last k element
+    reverse(arr,0,n-k);// reverse first n-k element
+    reverse(arr,0,n);// reverse all the element
+}
+int main(){
+   int arr[]={1,2,3,4,5};
+   int n=sizeof(arr)/sizeof(arr[0]);
+   int k=2;
+   rotateRightArray(arr,n,k);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+}
+  return 0;
+}

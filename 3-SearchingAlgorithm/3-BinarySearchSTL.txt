@@ -1,0 +1,109 @@
+1. upper_bound(),lower_bound(),binary_search() all these are used binary search algorithm and it only work when data is sorted.
+
+
+2. binary_search:Returns true if the value exists, false otherwise.
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+bool binarySearch(vector<int> &v,int x){
+    
+     return binary_search(v.begin(),v.end(),x);
+    
+}
+
+
+int main(){
+    vector<int> v={2,3,4,10,14};
+    
+    int x=10;
+    
+    bool result =binarySearch(v,x);
+    cout<<result<<endl;
+    
+    
+    return 0;
+}
+
+
+
+
+
+
+3. lower_bound: used to find first element in the given range that is greater than or equal to the given value.
+
+Returns an iterator pointing to that element.
+
+If no such element exists, returns end.
+
+
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+int binarySearch(vector<int> &v,int x){
+    
+    //  auto it = lower_bound(v.begin(),v.end(),x);
+     
+    //  if(it!=v.end() && *it==x){
+    //      return it -v.begin();
+    //  }
+    // return -1;
+    return (lower_bound(v.begin(),v.end(),x)-v.begin());
+}
+
+
+int main(){
+    vector<int> v={2,3,4,10,14};
+    
+    int x=10;
+    
+    int result =binarySearch(v,x);
+    cout<<result<<endl;
+    
+    
+    return 0;
+}
+
+
+
+
+4. upper_bound; Finds the **first element that is > value
+Returns an iterator pointing to that element.
+
+If no such element exists, returns end.
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+int binarySearch(vector<int> &v,int x){
+    
+    //  auto it = upper_bound(v.begin(),v.end(),x);
+     
+    //  if(it!=v.end() && *it==x){
+    //      return it -v.begin();
+    //  }
+    // return -1;
+    return (upper_bound(v.begin(),v.end(),x)-v.begin());
+}
+
+
+int main(){
+    vector<int> v={2,3,4,10,14};
+    
+    int x=10;
+    
+    int result =binarySearch(v,x);
+    cout<<result<<endl;
+    
+    
+    return 0;
+}

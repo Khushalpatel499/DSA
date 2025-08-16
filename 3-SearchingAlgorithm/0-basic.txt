@@ -1,0 +1,18 @@
+1.  there are two type of searching algorithm:
+    a. linear search      b. binary search
+
+2. linear search : it is used for an unsorted array. it mainly does one by one comparison of the item to be search with array elements. time:O(n)
+
+3. Binary search: it is used for sorted array . it mainly compares the array middle element first and if the middle element is same as input, then it returns. Otherwise it searches in either left half or right half based on comparison result. time:O(logn).
+
+
+Binary Search flow:
+
+
+1. first array should be sorted.
+2. find the middle element of the array.
+3. if findElement is equal to the middle element termintated and return index.
+4. if findElement is less than middle element search in left part.
+5. if findElement is larger than middle element search in right part.
+6. the process is continued until the findElement is found or the total search space is exhausted.
+

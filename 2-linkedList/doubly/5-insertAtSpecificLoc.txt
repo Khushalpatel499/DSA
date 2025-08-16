@@ -1,0 +1,71 @@
+#Algorithm:
+1. check if pos is not valid return head
+2. if pos =1 insert at beg
+3.       create newNode 
+4.       newNode->next =head;
+5.        head=newNode
+6.         return head;
+7. curr =head;
+8. use for loop till pos-1 and curr is not null
+9.           curr=curr->next
+10. if pos is out of bound then if curr==null
+11. return head
+12.  create new node 
+13.  newNode->prev =curr;
+14.  newNode->next =curr->next;
+15.  curr->next =newNode;
+16. if newNode->next!=nullptr that newNode is not last
+17.     newNode->next->prev= newNode
+18. return head
+
+//Implementation:
+#include<iostream>
+using namespace std;
+class Node{
+     public:
+      int data;
+      Node* prev,*next;
+      Node(int new_data): data(new_data),prev(nullptr),next(nullptr){}
+};
+void traversal(Node* head){
+      while(head!=nullptr){
+             cout<<head->data<<" ";
+            head=head->next;
+}
+cout<<endl;
+}
+
+Node* insertAtSpecificLoc(Node* head,int pos,int val){
+        if(pos<1) return head;
+        if(pos==1){
+           Node* newNode = new Node(val);
+             newNode->next =head;
+             if(head!=nullptr){
+             head->prev =newNode;
+           }
+           }
+        for(int i=1;i<pos-1 && curr!=null;i++){
+                 curr=curr->next;
+              }
+          newNode->prev =curr;
+          newNode->next =curr->next;
+          curr->next = newNode;
+// if newNode is not last 
+          if(newNode->next!=nullptr){
+              newNode->next->prev =newNode;
+           } 
+       return head;         
+}
+int main(){
+     Node* head = new Node(10);
+     head->next = new Node(20);
+     head->next->prev =head;
+     head->next->next = new Node(30);
+     head->next->next->prev = head->next;
+     traversal(head);
+     int pos=2;
+     int val=40;
+     head=insertAtSpecificLoc(head,pos,val);
+     traversal(head);
+      return 0;
+}

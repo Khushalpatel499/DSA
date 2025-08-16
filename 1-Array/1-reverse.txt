@@ -1,0 +1,134 @@
+// reverse the array (using temperory array)
+//  time=O(n) space =O(n)
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void reverseArray(vector<int> &v){
+    vector<int>t(5);
+    //if using push_back then we don't have to give size to vector but here we assgin so we have to assign
+    for(int i=0;i<v.size();i++){
+        t[i]=v[v.size()-1-i];
+        
+    }
+    for(int i=0;i<t.size();i++){
+        v[i]=t[i];
+    }
+}
+
+int main(){
+    vector<int>v ={1,2,3,4,5};
+    reverseArray(v);
+    
+    
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    
+    
+    return 0;
+}
+
+
+
+
+
+// reverse the array (using two pointer)
+// time -O(n) space-O(1)
+#include<iostream>
+#include<vector>
+
+using namespace std;
+void reverseArray(vector<int>&v){
+    int l =0, r =v.size()-1;
+    while(l<r){
+        swap(v[l],v[r]);
+        l++;
+        r--;
+    }
+}
+int main(){
+    
+    vector<int> v={1,2,3,4,5};
+    
+    reverseArray(v);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    return 0;
+}
+
+
+
+// reverse the array (using swapping)
+// time-O(n), space-O(1)
+#include<iostream>
+#include<vector>
+using namespace std;
+void reverseArray(vector<int>&v){
+    int n=v.size();
+    for(int i=0;i<n/2;i++){
+        swap(v[i],v[n-i-1]);
+    }
+}
+int main(){
+     vector<int> v={1,2,3,4,5,6};
+     reverseArray(v);
+     for(int i=0;i<v.size();i++){
+         cout<<v[i]<<" ";
+     }
+    
+    return 0;
+}
+
+
+
+// reverse the array (using recusrion)
+// time -O(n) space -O(n)
+#include<iostream>
+#include<vector>
+using namespace std;
+void reverseArray(vector<int> &v,int l,int r){
+    if(l>r) return;
+    swap(v[l],v[r]);
+    // C++, l++ and r-- are post-increment/decrement operations, meaning:
+    //The values of l and r used in the function call are the original ones.
+     //The increment/decrement happens after the function call.
+    //reverseArray(v,l++,r--);
+    reverseArray(v,l+1,r-1);
+}
+
+
+int main(){
+    vector<int>v ={1,2,3,4,5};
+    int l=0;
+    int r =v.size()-1;
+    reverseArray(v,l,r);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    return 0;
+}
+
+
+
+// reverse the array (using inbuild method )
+// time -O(n) space -O(n)
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+void reverseArray(vector<int> &v){
+   reverse(v.begin(),v.end());
+   
+}
+
+
+int main(){
+    vector<int> v={1,2,3,4,5};
+    reverseArray(v);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    
+}
