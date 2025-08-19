@@ -1,0 +1,28 @@
+1. Sorting is the process of arranging data in a particular order—usually ascending (low to high) or descending (high to low).
+
+
+#sorting Basics:
+
+1. in-place Sorting:use constant space for producing output.
+ex: selection,bubble,insertion,heap
+
+2. Internal Sorting: Sorting done entirely in the computer’s main memory (RAM).
+
+
+3. External Sorting: Sorting that involves external storage (like a hard drive or SSD) because the data doesn’t fit in memory.
+
+4. Stable Sorting: When two same items appear in the same order in sorted data as in the original array called stable sort.
+ex: merge sort,insertion sort,bubble sort.
+
+5. Hybrid Sort: A sorting algorithm is called Hybrid if it uses more than one standard sorting algorithms to sort the array.
+ex: introSort uses Insertion sort and Quick Sort.
+
+
+Type of Sorting Techniques:
+
+1. Comparison Based: We compare the elements in a comparison-based sorting algorithm.
+ Ex: Bubble,insertion,Selection,Quick,merge,heap
+
+2. Non-comparison-based: These algorithms do not use comparisons. Instead, they sort data using the actual value or structure of the data.
+Ex: Counting,Radix,Bucket
+

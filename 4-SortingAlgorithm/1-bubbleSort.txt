@@ -1,0 +1,117 @@
+//1. run n-1 iterators loop
+//2. compare adjacent element.( by loop)
+//3. push larger element in last.
+
+// simple explation: in first iteration the largest element come at the last , in second the second largest element come to second last position  and so on.
+
+ex: [4,1,5,2,3]
+
+1st itr           |         2nd itr         |     3rd itr         |         4th itr
+4 1 5 2 3         |    1 4 2 3 5            |       1 2 3 4 5     |       1 2 3 4 5 
+                  |                         |                     |
+1 4 5 2 3         |    1 4 2 3 5            |       1 2 3 4 5     |       1 2 3 4 5
+                  |                         |                     |
+1 4 5 2 3         |    1 2 4 3 5            |       1 2 3 4 5     | 
+                  |                         |                     |
+1 4 2 5 3         |    1 2 3 4 5            |                     |
+                  |                         |                     |
+1 4 2 3 5         |                         |                     |
+
+get first largest  here 4 and 5 is alredy in       3,  4 and 5 already in    2,3,4,and 5 are
+element 5 at last      correct position so         correct position.          in correct pos.
+                     we not compare it.                                     1 is only element
+                                                                            no further swap.
+
+analayse:
+
+when i=0  there should be 4 comparison.
+ when i=1 there should be 3 comparison.
+when i =2 there should be 2 comparison.
+when i=3 there should be 1 comparison.
+
+from above ananlysis the pattern: n-i-1
+
+pseudo code:    for(int i=0;i<n-1;i++){  --> outer loop
+                       for(int j=0;j<n-i-1;j++){   ----> inner loop
+                           if(a[j]>a[j+1]){
+                                swap(a[j],a[j+1])
+                            }  
+                       }
+                 }
+
+
+time Complexity: when outer loop run 1 time then inner loop run n times and when outer loop run n time then inner loop run n*n times means time complexity is O(n^2)
+
+imp:: n^2 is not good time for sorting algorithm there are some which work on nlogn which is good
+
+
+Basic approach code:
+
+// bubble sort: O(n^2)
+
+#include<iostream>
+using namespace std;
+void bubbleSort(int arr[],int n){
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                swap(arr[j],arr[j+1]);
+            }
+        }
+    }
+}
+
+void printArray(int arr[],int n){
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main(){
+    int n=5;
+    int arr[]={4,1,5,2,3};
+    bubbleSort(arr,n);
+    printArray(arr,n);
+    return 0;
+    
+}
+
+
+imp: we saw that when the array sort still bubble sort run till n-1 iterator  so we have to now optimised this by a flag.
+approach: we create isSwapped with bool type of false it check that if there is no swap in inner loop means the array is alredy sorted and we terminate the loop;
+
+
+// better approach:
+
+// bubble sort: O(n^2)
+//space: O(1)
+
+#include<iostream>
+using namespace std;
+void bubbleSort(int arr[],int n){
+    for(int i=0;i<n-1;i++){
+        bool isSwapped =false;
+        for(int j=0;j<n-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                swap(arr[j],arr[j+1]);
+                isSwapped =true;
+            }
+        }
+        if(!isSwapped) break;
+    }
+}
+
+void printArray(int arr[],int n){
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main(){
+    int n=5;
+    int arr[]={4,1,5,2,3};
+    bubbleSort(arr,n);
+    printArray(arr,n);
+    return 0;
+    
+}
